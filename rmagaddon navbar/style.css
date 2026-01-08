@@ -43,7 +43,7 @@ body {
   justify-content: flex-end;
   margin-left: auto;
   order: 3;
-  gap: 20px;
+  gap: 15px;
 } 
 
 .navrnxglogo{
@@ -117,81 +117,101 @@ body {
   margin-right: -50px;
   display: inline-block;
 }
-.sidebar {
+
+/* Hamburger and mobile menu */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+  align-items: center;
+  gap: 8px;
+}
+.hamburger .icon { display: inline-block; }
+.hamburger .icon-close { display: none; }
+.hamburger.active .icon-menu { display: none; }
+.hamburger.active .icon-close { display: inline-block; }
+
+.mobile-menu {
   position: fixed;
   top: 0;
   right: 0;
+  left: auto;
+  width: 300px;
   height: 100vh;
-  width: 250px;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.123);
-  backdrop-filter: blur(10px);
-  box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: rgba(255, 255, 255, 0.323);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #111;
+  z-index: 1002;
+  padding: 24px 20px;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+  transform: translateX(100%);
+  transition: transform 320ms cubic-bezier(.2,.8,.2,1);
+  will-change: transform;
+  display: block;
 }
-.sidebar li{
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 100%;
-  margin-top: 80px;
-}
-.sidebar li a{
-  text-decoration: none;
-  color: white;
-  font-weight: 700
-}
-.sidebar li:hover{
-  background-color: rgba(255, 255, 255, 0.397);
+.mobile-menu.open {
+  transform: translateX(0);
 }
 
-/* Hamburger button (hidden on wide screens) */
-.hamburger{
-  display: none;
-  width: 40px;
-  height: 34px;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  color: white;
-}
-.hamburger .icon{ width: 24px; height: 24px; display: block; }
-.hamburger .icon-menu{ display: block; }
-.hamburger .icon-close{ display: none; }
-.hamburger.open .icon-menu{ display: none; }
-.hamburger.open .icon-close{ display: block; }
-
-/* responsive: show hamburger at <=940px and make sidebar slide in */
-@media (max-width: 940px){
-  .nav-left, .nav-right{ display: none; }
-  .hamburger{ display: flex; }
-  .sidebar{ transform: translateX(100%); transition: transform 260ms cubic-bezier(.2,.8,.2,1); z-index: 1002; }
-  .sidebar.open{ transform: translateX(0); }
-  body.menu-open{ overflow: hidden; height: 100vh; }
-}
-.sidebar li{
+.mobile-menu ul {
   list-style: none;
+  margin: 0;
+  padding: 8px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 100%;
-  margin-top: 80px;
+  gap: 12px;
+  align-items: flex-start;
 }
-.sidebar li a{
+.mobile-menu a {
+  color: #ffffff;
   text-decoration: none;
-  color: white;
-  font-weight: 700
+  font-weight: 600;
+  font-size: 18px;
+  padding: 8px 12px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  transition: color 0.18s ease;
 }
-.sidebar li:hover{
-  background-color: rgba(255, 255, 255, 0.397);
+/* Hover changes link color to blue */
+.mobile-menu a:hover {
+  color: #00C6FF;
+}
+
+/* Responsive behavior */
+@media (max-width: 940px) {
+  .nav-left, .nav-right { display: none; }
+  .rnxglogo { left: 16px; }
+  .hamburger { display: inline-flex; order: 3; }
+  .navbar-inner { justify-content: space-between; }
+}
+
+/* Mobile navbar adjustments for small screens */
+@media (max-width: 440px) {
+  .navbar {
+   
+    background-image: url('rnxg\ background\ mobile\ size\ \(Blue\).svg');
+    background-size: 500px auto; 
+    background-position: top center;
+    background-repeat: no-repeat;
+    color: #fff;
+  }
+ 
+  .navbar-inner {
+    padding: 10px 12px;
+  }
+  .rnxglogo { 
+    left: 12px;
+    height: 30px;
+   }
+}
+@media (max-width: 1024px) {
+  .navlinks.navlinks-right li {
+    margin: 0 8px;
+  }
 }

@@ -12,13 +12,6 @@
 <body>
 
     <nav class="navbar">
-        <ul class="sidebar">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">EVENTS</a></li>
-            <li><a href="#">ACCOMMODATION</a></li>
-            <li><a href="#">CONTACT US</a></li>
-            <li><a href="#"></a></li>
-        </ul>
         <div class="navbar-inner">
             <div class="nav-center">
                 <a href="https://www.rnxg.co.in/" class="navrnxglogo">
@@ -27,7 +20,7 @@
             </div>
             <div class="nav-left">
                 <ul class="navlinks navlinks-left">
-                    <li><a href="#">HOME</a></li>
+                    <li ><a href="#">HOME</a></li>
                     <li><a href="#">EVENTS</a></li>
                 </ul>
             </div>
@@ -36,39 +29,33 @@
                     <div id="ACCOMMODATION">
                         <li><a href="#">ACCOMMODATION</a></li>
                     </div>
-                    <div id="CONTACT US"><li><a href="#">CONTACT US</a></li></div>
+                    <div id="CONTACT US">
+                      <li ><a href="#">CONTACT US</a></li></div>
                 </ul>
-                <button class="hamburger" aria-label="Open menu" aria-expanded="false" type="button">
-                  <svg class="icon icon-menu" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-                    <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                  </svg>
-                  <svg class="icon icon-close" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-                    <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                  </svg>
-                </button>
             </div>
+
+            <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+                <svg class="icon icon-menu" width="29" height="29" viewBox="0 -960 960 960" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+
+                <svg class="icon icon-close" width="29" height="29" viewBox="0 -960 960 960" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+            </button>
          </div>
     </nav>
 
-<!-- JS -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function(){
-        const hamburger = document.querySelector('.hamburger');
-        const sidebar = document.querySelector('.sidebar');
-        if(!hamburger) return;
-        function setOpen(open){
-          hamburger.classList.toggle('open', open);
-          sidebar.classList.toggle('open', open);
-          hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-          hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-          document.body.classList.toggle('menu-open', open);
-          document.body.style.overflow = open ? 'hidden' : '';
-        }
-        hamburger.addEventListener('click', function(){ setOpen(!hamburger.classList.contains('open')); });
-        document.querySelectorAll('.sidebar a, .navlinks a').forEach(el=> el.addEventListener('click', ()=> setOpen(false)));
-        window.addEventListener('resize', ()=>{ if(window.innerWidth > 940) setOpen(false); });
-      });
-    </script>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">EVENTS</a></li>
+            <li><a href="#">ACCOMMODATION</a></li>
+            <li><a href="#">CONTACT US</a></li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script> 
 </body>
 
 </html>
