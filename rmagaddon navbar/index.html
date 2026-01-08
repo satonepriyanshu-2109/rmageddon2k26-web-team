@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rmageddon2k26</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul class="sidebar">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">EVENTS</a></li>
+            <li><a href="#">ACCOMMODATION</a></li>
+            <li><a href="#">CONTACT US</a></li>
+            <li><a href="#"></a></li>
+        </ul>
+        <div class="navbar-inner">
+            <div class="nav-center">
+                <a href="https://www.rnxg.co.in/" class="navrnxglogo">
+                    <img src="rnxg white logo.svg" alt="RNXGlogo" class="rnxglogo">
+                </a>
+            </div>
+            <div class="nav-left">
+                <ul class="navlinks navlinks-left">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">EVENTS</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul class="navlinks navlinks-right">
+                    <div id="ACCOMMODATION">
+                        <li><a href="#">ACCOMMODATION</a></li>
+                    </div>
+                    <div id="CONTACT US"><li><a href="#">CONTACT US</a></li></div>
+                </ul>
+                <button class="hamburger" aria-label="Open menu" aria-expanded="false" type="button">
+                  <svg class="icon icon-menu" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                    <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  </svg>
+                  <svg class="icon icon-close" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                    <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  </svg>
+                </button>
+            </div>
+         </div>
+    </nav>
+
+<!-- JS -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        if(!hamburger) return;
+        function setOpen(open){
+          hamburger.classList.toggle('open', open);
+          sidebar.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+          hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+          document.body.classList.toggle('menu-open', open);
+          document.body.style.overflow = open ? 'hidden' : '';
+        }
+        hamburger.addEventListener('click', function(){ setOpen(!hamburger.classList.contains('open')); });
+        document.querySelectorAll('.sidebar a, .navlinks a').forEach(el=> el.addEventListener('click', ()=> setOpen(false)));
+        window.addEventListener('resize', ()=>{ if(window.innerWidth > 940) setOpen(false); });
+      });
+    </script>
+</body>
+
+</html>
